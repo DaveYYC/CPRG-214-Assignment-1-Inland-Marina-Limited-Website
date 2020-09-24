@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CPRG214.InlandMarinaLtd.App.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Inland Marina Ltd.</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="Images/sailboat.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+        crossorigin="anonymous">
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <nav class="navbar navbar-expand-lg navbar-inverse fixed-top">          
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon text-light">
+                    <i class="fas fa-bars" style="color: #fff; font-size: 28px;"></i>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-light" href="~/" runat="server">Home</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/AvailableSlips" runat="server">Available SLips</a>
+                    </li>
+                    <% if (Session["CustomerID"] != null)
+                        { %>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="~/Secure/AllowLeasing" runat="server">Lease Slip</a>
+                    </li>
+                    <% }
+                        else
+                        {%>
+                    <%} %>
+                    <li class="nav-item">
+                        <% if (Session["CustomerID"] == null)
+                            { %>
+                        <a class="nav-link text-light" href="~/Registration" runat="server">Register</a>
+                        <% }
+                            else
+                            {%>
+                        <a class="nav-link text-light" href="~/Secure/UpdateRegistration" runat="server">Update Registration</a>
+
+                        <%} %>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link text-light" href="/Contact" runat="server">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <span id="uxWelcome" runat="server" class="navbar-text"></span>
+            <% if (Session["CustomerID"] == null)
+                { %>
+            <ul class="navbar-nav rm">
+                <li class="nav-item">
+                    <a class="nav-link text-light" runat="server"
+                        href="~/Registration" title="Register">
+                        <span class="fa fa-user"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <%} %>
+                    <a class="nav-link text-light" runat="server" title="Login"
+                        id="uxLogin" onserverclick="HandleLoginClick" enableviewstate="false">
+                        <span class="fa fa-sign-in-alt"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+        </div>
+    </form>
+    <footer class="border-top footer text-light">
+        <div class="container">
+            &copy; <%: DateTime.Now.Year %> - Inland Marina Ltd. 
+                <a class="float-right text-light" href="#">Back to top</a>
+        </div>
+    </footer>
+</body>
+</html>

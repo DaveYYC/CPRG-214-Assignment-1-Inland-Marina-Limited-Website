@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Marina_Auth_AddedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authentication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WaterService" Type="bit" Nullable="false" />
+          <Property Name="ElectricalService" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lease">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlipID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Length" Type="int" Nullable="false" />
+          <Property Name="DockID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AuthenticationCustomer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Authentication" Type="Self.Authentication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Authentication">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LeaseCustomer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Lease" Type="Self.Lease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lease">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LeaseSlip">
+          <End Role="Slip" Type="Self.Slip" Multiplicity="1" />
+          <End Role="Lease" Type="Self.Lease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lease">
+              <PropertyRef Name="SlipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlipDock">
+          <End Role="Dock" Type="Self.Dock" Multiplicity="1" />
+          <End Role="Slip" Type="Self.Slip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dock">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Slip">
+              <PropertyRef Name="DockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Marina_Auth_AddedModelStoreContainer">
+          <EntitySet Name="Authentication" EntityType="Self.Authentication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dock" EntityType="Self.Dock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lease" EntityType="Self.Lease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slip" EntityType="Self.Slip" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AuthenticationCustomer" Association="Self.FK_AuthenticationCustomer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Authentication" EntitySet="Authentication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaseCustomer" Association="Self.FK_LeaseCustomer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Lease" EntitySet="Lease" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaseSlip" Association="Self.FK_LeaseSlip">
+            <End Role="Slip" EntitySet="Slip" />
+            <End Role="Lease" EntitySet="Lease" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlipDock" Association="Self.FK_SlipDock">
+            <End Role="Dock" EntitySet="Dock" />
+            <End Role="Slip" EntitySet="Slip" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Marina_Auth_AddedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authentication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_AuthenticationCustomer" FromRole="Authentication" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Authentications" Relationship="Self.FK_AuthenticationCustomer" FromRole="Customer" ToRole="Authentication" />
+          <NavigationProperty Name="Leases" Relationship="Self.FK_LeaseCustomer" FromRole="Customer" ToRole="Lease" />
+        </EntityType>
+        <EntityType Name="Dock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WaterService" Type="Boolean" Nullable="false" />
+          <Property Name="ElectricalService" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Slips" Relationship="Self.FK_SlipDock" FromRole="Dock" ToRole="Slip" />
+        </EntityType>
+        <EntityType Name="Lease">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlipID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_LeaseCustomer" FromRole="Lease" ToRole="Customer" />
+          <NavigationProperty Name="Slip" Relationship="Self.FK_LeaseSlip" FromRole="Lease" ToRole="Slip" />
+        </EntityType>
+        <EntityType Name="Slip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Length" Type="Int32" Nullable="false" />
+          <Property Name="DockID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dock" Relationship="Self.FK_SlipDock" FromRole="Slip" ToRole="Dock" />
+          <NavigationProperty Name="Leases" Relationship="Self.FK_LeaseSlip" FromRole="Slip" ToRole="Lease" />
+        </EntityType>
+        <Association Name="FK_AuthenticationCustomer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Authentication" Type="Self.Authentication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Authentication">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LeaseCustomer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Lease" Type="Self.Lease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lease">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlipDock">
+          <End Role="Dock" Type="Self.Dock" Multiplicity="1" />
+          <End Role="Slip" Type="Self.Slip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dock">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Slip">
+              <PropertyRef Name="DockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LeaseSlip">
+          <End Role="Slip" Type="Self.Slip" Multiplicity="1" />
+          <End Role="Lease" Type="Self.Lease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lease">
+              <PropertyRef Name="SlipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Marina_Auth_AddedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authentications" EntityType="Self.Authentication" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Docks" EntityType="Self.Dock" />
+          <EntitySet Name="Leases" EntityType="Self.Lease" />
+          <EntitySet Name="Slips" EntityType="Self.Slip" />
+          <AssociationSet Name="FK_AuthenticationCustomer" Association="Self.FK_AuthenticationCustomer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Authentication" EntitySet="Authentications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaseCustomer" Association="Self.FK_LeaseCustomer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Lease" EntitySet="Leases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlipDock" Association="Self.FK_SlipDock">
+            <End Role="Dock" EntitySet="Docks" />
+            <End Role="Slip" EntitySet="Slips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaseSlip" Association="Self.FK_LeaseSlip">
+            <End Role="Slip" EntitySet="Slips" />
+            <End Role="Lease" EntitySet="Leases" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Marina_Auth_AddedModelStoreContainer" CdmEntityContainer="Marina_Auth_AddedEntities">
+          <EntitySetMapping Name="Authentications">
+            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Authentication">
+              <MappingFragment StoreEntitySet="Authentication">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Docks">
+            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Dock">
+              <MappingFragment StoreEntitySet="Dock">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WaterService" ColumnName="WaterService" />
+                <ScalarProperty Name="ElectricalService" ColumnName="ElectricalService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leases">
+            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Lease">
+              <MappingFragment StoreEntitySet="Lease">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SlipID" ColumnName="SlipID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slips">
+            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Slip">
+              <MappingFragment StoreEntitySet="Slip">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="DockID" ColumnName="DockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
