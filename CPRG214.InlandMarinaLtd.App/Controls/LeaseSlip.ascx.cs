@@ -33,9 +33,27 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
             DropDownSlips.SelectedIndex = 0;
             uxID.Text = e.ID;
             uxName.Text = e.Name;
-            uxWaterServices.Text = (e.WaterService).ToString();
-            uxElectricalServices.Text = (e.ElectricalService).ToString();
+
+            if (e.WaterService == true)
+            {
+                uxWaterServices.Text = "Available";
+            }
+            else
+            {
+                uxWaterServices.Text = "Not Available";
+            }
+            if (e.ElectricalService == true)
+            {
+                uxElectricalServices.Text = "Avaialable";
+            }
+            else {
+                uxElectricalServices.Text = "Not Available";
+            }
+            
         }
+
+
+
         protected void DropDownSlips_SelectedIndexChanged(object sender, EventArgs e)
         {
             var ID = Convert.ToInt32(DropDownSlips.SelectedValue);

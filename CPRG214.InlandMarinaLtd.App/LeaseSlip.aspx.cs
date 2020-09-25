@@ -15,7 +15,7 @@ namespace CPRG214.InlandMarinaLtd.App
         {
             if (Session["CustomerID"] == null)
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("Registration.aspx");
             }           
         }
     }

@@ -6,6 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 
+/*
+ * Title: CPRG 214 ASP.Net Web Form Assignment 1
+ * Author: David Hahner 
+ * Date: Sept 2020
+ * Description: Creation of a website for Inland Marina Ltd, 
+ *              utlilizing the Entity Framework DB - First Approach.
+ */
+
 namespace CPRG214.InlandMarinaLtd.App
 {
     public partial class SiteMaster : MasterPage
