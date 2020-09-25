@@ -60,7 +60,7 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
         {
             int customerID = Convert.ToInt32(Session["CustomerID"]);
             int slipID = Convert.ToInt32(DropDownSlips.SelectedValue);
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var lease = new Lease { SlipID = slipID, CustomerID = customerID };
             db.Leases.Add(lease);
             db.SaveChanges();

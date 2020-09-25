@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\hahne\Desktop\CPRG214_Assignment_1\CPRG214.InlandMarinaLtd\CPRG214.InlandMarinaLtd.Data\Marina_Auth_Added.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\hahne\Desktop\CPRG214.Assignment.1.Inland.Marina.Limited.Website\CPRG214.InlandMarinaLtd\CPRG214.InlandMarinaLtd.Data\Marina_Auth_Added.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

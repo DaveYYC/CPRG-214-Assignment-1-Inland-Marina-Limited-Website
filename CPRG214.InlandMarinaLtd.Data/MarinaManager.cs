@@ -9,7 +9,7 @@ namespace CPRG214.InlandMarinaLtd.Data
         // retrieve all dock info
         public IList GetAllListItems()
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var docks = db.Docks.Select(dk => new
             {
                 ID = dk.ID,
@@ -23,7 +23,7 @@ namespace CPRG214.InlandMarinaLtd.Data
         // find dock id
         public static Dock Find(int ID)
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var docks = db.Docks.FirstOrDefault(d => d.ID == ID);
             return docks;
         }
@@ -31,7 +31,7 @@ namespace CPRG214.InlandMarinaLtd.Data
         // retrieve all slip info
         public IList GetAllSlipsListItems()
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var slips = db.Slips.Select(sp => new
             { 
               ID = sp.ID, 
@@ -45,7 +45,7 @@ namespace CPRG214.InlandMarinaLtd.Data
         // find slip id
         public static Slip FindSlip(int id)
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var slip = db.Slips.SingleOrDefault(s => s.ID == id);
             return slip;
         }
@@ -53,7 +53,7 @@ namespace CPRG214.InlandMarinaLtd.Data
         // retreive slips that are not leased by dock id
         public static List<Slip> getAvailableSlipByDock(int id)
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             List<Slip> slips = (from slip in db.Slips
                                 where (!(from lease in db.Leases
                                          select lease.SlipID).Contains(slip.ID)) && slip.DockID == id
@@ -64,8 +64,8 @@ namespace CPRG214.InlandMarinaLtd.Data
         // retrieve all lease info by customer id
         public static ICollection<Lease> GetLeasesByCustomerID(int ID)
         {
-            var db = new Marina_Auth_AddedEntities();
-           
+            var db = new MarinaEntities();
+
             List<Lease> leases = (from lease in db.Leases
                                   where lease.CustomerID == ID
                                   select lease).ToList();
@@ -75,7 +75,7 @@ namespace CPRG214.InlandMarinaLtd.Data
         // retrieve all lease info
         public static IList GetAllLeases(int ID)
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
 
             var leases = db.Leases.Select(l => new
             {

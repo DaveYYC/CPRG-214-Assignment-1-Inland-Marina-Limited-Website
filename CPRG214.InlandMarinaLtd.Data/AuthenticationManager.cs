@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CPRG214.InlandMarinaLtd.Data;
 
 namespace CPRG214.InlandMarinaLtd.Data
 {
@@ -7,7 +8,7 @@ namespace CPRG214.InlandMarinaLtd.Data
         public static CustomerDTO Authenticate(string username, string password)
         {
             CustomerDTO dto = null;
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var auth = db.Authentications.
                 FirstOrDefault(a => a.Username == username && a.Password == password);
             if (auth != null) // authentication passsed
@@ -23,7 +24,7 @@ namespace CPRG214.InlandMarinaLtd.Data
 
         public static Authentication Find(int customerID)
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var auth = db.Authentications.
                 SingleOrDefault(a => a.CustomerID == customerID);
             return auth;
@@ -31,14 +32,14 @@ namespace CPRG214.InlandMarinaLtd.Data
 
         public static void Add(Authentication auth)
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             db.Authentications.Add(auth);
             db.SaveChanges();
         }
 
         public static void Update(Authentication auth)
         {
-            var db = new Marina_Auth_AddedEntities();
+            var db = new MarinaEntities();
             var authFromContext = db.Authentications.SingleOrDefault(a => a.ID == auth.ID);
             authFromContext.Username = auth.Username;
             authFromContext.Password = auth.Password;

@@ -69,11 +69,12 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
                     ID = Convert.ToInt32(Session["CustomerID"]),
                     Username = uxUsername.Text,
                     Password = uxPassword.Text,
-                    Customer = new Customer {
-                    FirstName = uxFirstName.Text,
-                    LastName = uxLastName.Text,
-                    Phone = uxPhone.Text,
-                    City = uxCity.Text
+                    Customer = new Customer 
+                    {
+                        FirstName = uxFirstName.Text,
+                        LastName = uxLastName.Text,
+                        Phone = uxPhone.Text,
+                        City = uxCity.Text
                     }
                 };
                 //pass the auth object to the manager for inserting

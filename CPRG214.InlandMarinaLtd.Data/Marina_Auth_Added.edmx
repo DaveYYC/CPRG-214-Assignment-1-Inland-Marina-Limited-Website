@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Marina_Auth_AddedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MarinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Authentication">
           <Key>
             <PropertyRef Name="ID" />
@@ -98,7 +98,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Marina_Auth_AddedModelStoreContainer">
+        <EntityContainer Name="MarinaModelStoreContainer">
           <EntitySet Name="Authentication" EntityType="Self.Authentication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dock" EntityType="Self.Dock" Schema="dbo" store:Type="Tables" />
@@ -125,7 +125,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Marina_Auth_AddedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MarinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Authentication">
           <Key>
             <PropertyRef Name="ID" />
@@ -227,7 +227,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Marina_Auth_AddedEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MarinaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Authentications" EntityType="Self.Authentication" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Docks" EntityType="Self.Dock" />
@@ -255,9 +255,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Marina_Auth_AddedModelStoreContainer" CdmEntityContainer="Marina_Auth_AddedEntities">
+        <EntityContainerMapping StorageEntityContainer="MarinaModelStoreContainer" CdmEntityContainer="MarinaEntities">
           <EntitySetMapping Name="Authentications">
-            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Authentication">
+            <EntityTypeMapping TypeName="MarinaModel.Authentication">
               <MappingFragment StoreEntitySet="Authentication">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -267,7 +267,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Customer">
+            <EntityTypeMapping TypeName="MarinaModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -278,7 +278,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Docks">
-            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Dock">
+            <EntityTypeMapping TypeName="MarinaModel.Dock">
               <MappingFragment StoreEntitySet="Dock">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -288,7 +288,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Leases">
-            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Lease">
+            <EntityTypeMapping TypeName="MarinaModel.Lease">
               <MappingFragment StoreEntitySet="Lease">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SlipID" ColumnName="SlipID" />
@@ -297,7 +297,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Slips">
-            <EntityTypeMapping TypeName="Marina_Auth_AddedModel.Slip">
+            <EntityTypeMapping TypeName="MarinaModel.Slip">
               <MappingFragment StoreEntitySet="Slip">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Width" ColumnName="Width" />

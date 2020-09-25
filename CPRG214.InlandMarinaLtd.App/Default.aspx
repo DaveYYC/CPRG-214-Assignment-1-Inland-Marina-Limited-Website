@@ -31,7 +31,7 @@
                 <div class="text-center">
                     <h2>Create a leasing account today!</h2>
                     <p>
-                        Simple <a href="Registration.aspx">registration: </a> fill in registration info, and create a username/password for your secure account access.
+                        Simple <a href="Registration.aspx">Registration: </a> fill in registration info, and create a username/password for your secure account access.
                     </p>
                     <% }
                         else

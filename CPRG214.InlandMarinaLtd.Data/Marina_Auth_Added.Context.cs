@@ -13,10 +13,10 @@ namespace CPRG214.InlandMarinaLtd.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Marina_Auth_AddedEntities : DbContext
+    public partial class MarinaEntities : DbContext
     {
-        public Marina_Auth_AddedEntities()
-            : base("name=Marina_Auth_AddedEntities")
+        public MarinaEntities()
+            : base("name=MarinaEntities")
         {
         }
     
