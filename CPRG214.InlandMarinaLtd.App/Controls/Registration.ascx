@@ -6,9 +6,16 @@
             <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/inlandbanner_v3_800x100.jpg" class="img-fluid" />
             <br />
             <br />
+            <% if (Session["CustomerID"] == null)
+                { %>
             <h2>Welcome to Registration</h2>
             <br />
             <h3>Please enter your information:</h3>
+            <% }
+                else
+                {%>
+            <h3>Please update your information:</h3>
+            <%} %>
             <br />
         </div>
         <center>

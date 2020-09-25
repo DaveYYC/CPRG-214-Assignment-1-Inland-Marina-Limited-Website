@@ -11,8 +11,7 @@ namespace CPRG214.InlandMarinaLtd.App.Secure
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // all we have to do in this form is let the control
-            // know that it is being used for updating no inserting
+            // let the control know that it is being used for updating no inserting
             uxRegistration.IsUpdate = true;
         }
     }

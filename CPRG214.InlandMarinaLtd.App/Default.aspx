@@ -34,7 +34,12 @@
                     <p>
                         Simply select <a href="Registration.aspx">Register,</a> complete the form, and create a username and password for your account.
                     </p>
-                     <% } else {%>  <%} %>
+                     <% } else 
+                         {%> 
+                             <div class="row justify-content-md-center">
+                                <p><a href="LeaseSlip.aspx" class="btn btn-primary btn-med">Lease Slip</a></p>
+                            </div>
+                    <%} %>
                 </div>
             </div>
         </div>

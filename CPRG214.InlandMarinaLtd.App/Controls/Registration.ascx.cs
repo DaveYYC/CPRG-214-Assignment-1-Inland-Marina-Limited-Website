@@ -16,10 +16,10 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
         {
             if (IsUpdate)
             {
-                //get student id out of session
+                //get customer id out of session
                 if (Session["CustomerID"] != null)
                 {
-                    //need to convert the object in session to an int
+                    //convert the object in session to an int
                     var ID = Convert.ToInt32(Session["CustomerID"]);
 
                     //get the Authentication object from the manager

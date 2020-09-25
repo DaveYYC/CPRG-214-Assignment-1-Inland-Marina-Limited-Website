@@ -24,6 +24,7 @@ namespace CPRG214.InlandMarinaLtd.Data
             }
             return dto;
         }
+
         public static Authentication Find(int customerID)
         {
             var db = new Marina_Auth_AddedEntities();

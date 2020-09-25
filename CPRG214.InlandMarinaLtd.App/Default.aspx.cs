@@ -21,9 +21,12 @@ namespace CPRG214.InlandMarinaLtd.App
     public partial class _Default : Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
+        {   
+            // refreshes browser if user didn't log out
+            if(Session["CustomerID"] == null)
+            {
+                FormsAuthentication.SignOut();
+            }
         }
-
     }
 }
