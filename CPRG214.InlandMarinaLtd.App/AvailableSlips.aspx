@@ -10,9 +10,8 @@
                 <br />
                 <br />
                 <h1 class="text-center">Please select a dock to view the available slips:</h1>
-                
                 <uc1:DockSelector runat="server" ID="DockSelector" />
-              <br />
+                <br />
                 <br />
                 <asp:GridView ID="gridvSlips" runat="server" HorizontalAlign="Center" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="grid">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />

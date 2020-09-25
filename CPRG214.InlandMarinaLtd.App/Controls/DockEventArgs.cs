@@ -1,8 +1,4 @@
-﻿using CPRG214.InlandMarinaLtd.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 
 namespace CPRG214.InlandMarinaLtd.App.Controls
 {
@@ -12,8 +8,5 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
         public string Name { get; set; }
         public bool WaterService { get; set; }
         public bool ElectricalService { get; set; }
-
-       
-        
     }
 }

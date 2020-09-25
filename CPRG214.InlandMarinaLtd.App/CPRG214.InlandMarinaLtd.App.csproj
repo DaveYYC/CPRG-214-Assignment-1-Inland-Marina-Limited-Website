@@ -133,7 +133,6 @@
     <Content Include="Global.asax" />
     <Content Include="ErrorPages\ErrorMaster.Master" />
     <Content Include="Images\sailboat.png" />
-    <Content Include="Images\Slips.jpg" />
     <Content Include="LeaseSlip.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

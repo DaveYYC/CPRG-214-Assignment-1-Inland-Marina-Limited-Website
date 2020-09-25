@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using CPRG214.InlandMarinaLtd.Data;
 
 
@@ -22,7 +17,6 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
             set { uxSlip.AutoPostBack = value; }
         }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,7 +32,6 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
                 uxSlip_SelectedIndexChanged(this, e);
             }
         }
-
 
         protected void uxSlip_SelectedIndexChanged(object sender, EventArgs e)
         {

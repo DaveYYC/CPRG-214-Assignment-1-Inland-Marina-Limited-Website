@@ -34,13 +34,17 @@
                             <h4 class="text-center">Questions/Comments?</h4>
                             <br />
                             <div class="form-group">
-                                <input class="form-control" type="text" name="name" placeholder="Name" /></div>
+                                <input class="form-control" type="text" name="name" placeholder="Name" />
+                            </div>
                             <div class="form-group">
-                                <input class="form-control" type="email" name="email" placeholder="Email" /></div>
+                                <input class="form-control" type="email" name="email" placeholder="Email" />
+                            </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="4" name="message" placeholder="Message"></textarea></div>
+                                <textarea class="form-control" rows="4" name="message" placeholder="Message"></textarea>
+                            </div>
                             <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Send</button></div>
+                                <button class="btn btn-primary" type="submit">Send</button>
+                            </div>
                         </form>
                     </div>
                 </div>

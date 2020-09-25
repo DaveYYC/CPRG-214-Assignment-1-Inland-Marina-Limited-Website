@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.Security; // FormsAuthentication
+using System.Web.Security; 
 using CPRG214.InlandMarinaLtd.Data;
-
-/*
- * Title: CPRG 214 ASP.Net Web Form Assignment 1
- * Author: David Hahner 
- * Date: Sept 2020
- * Description: Creation of a website for Inland Marina Ltd, 
- *              utlilizing the Entity Framework DB - First Approach.
- */
 
 namespace CPRG214.InlandMarinaLtd.App
 {
@@ -21,7 +8,6 @@ namespace CPRG214.InlandMarinaLtd.App
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        
         }
 
         protected void uxAuthenticate_Click(object sender, EventArgs e)

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using CPRG214.InlandMarinaLtd.Data;
 
 namespace CPRG214.InlandMarinaLtd.App.Controls
 {

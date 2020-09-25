@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using CPRG214.InlandMarinaLtd.Data;
 
 namespace CPRG214.InlandMarinaLtd.App.Controls
 {
     public partial class DockSelector : System.Web.UI.UserControl
     {
-
         // declare event
         public event DockSelectionHandler DockSelect;
-
 
         public Dock Dock { get; set; }
 
@@ -21,9 +14,7 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
         {
             get { return uxDocks.AutoPostBack; }
             set { uxDocks.AutoPostBack = value; }
-
         }
-
 
         protected void Page_Load(object sender, EventArgs e)
         {

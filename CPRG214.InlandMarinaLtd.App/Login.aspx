@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CPRG214.InlandMarinaLtd.App.Login" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="jumbotron mt-4">
@@ -24,7 +25,6 @@
                                 <asp:TextBox ID="uxPassword" runat="server" TextMode="Password"></asp:TextBox>
                             </td>
                         </tr>
-                       
                         <tr>
                             <td colspan="2">
                                 <asp:Button ID="uxAuthenticate" runat="server" Text="Log In" OnClick="uxAuthenticate_Click" />

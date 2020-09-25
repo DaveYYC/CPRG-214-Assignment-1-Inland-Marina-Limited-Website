@@ -4,9 +4,8 @@
     <div class="container">
         <div class="jumbotron mt-4">
             <div class="text-center mb-5">
-                <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/inlandbanner_v3_800x100.jpg" class="img-fluid"  />
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/inlandbanner_v3_800x100.jpg" class="img-fluid" />
             </div>
-
             <div class="row justify-content-md-center">
                 <p><a href="AvailableSlips.aspx" class="btn btn-primary btn-med">View Available Slips</a></p>
             </div>
@@ -27,18 +26,19 @@
                     Dock services include electrical and fresh water services.
                 </p>
                 <br />
-                  <% if (Session["CustomerID"] == null)
-                   { %>
+                <% if (Session["CustomerID"] == null)
+                    { %>
                 <div class="text-center">
-                    <h2>Create your account today!</h2>
+                    <h2>Create a leasing account today!</h2>
                     <p>
-                        Simply select <a href="Registration.aspx">Register,</a> complete the form, and create a username and password for your account.
+                        Simple <a href="Registration.aspx">registration: </a> fill in registration info, and create a username/password for your secure account access.
                     </p>
-                     <% } else 
-                         {%> 
-                             <div class="row justify-content-md-center">
-                                <p><a href="LeaseSlip.aspx" class="btn btn-primary btn-med">Lease Slip</a></p>
-                            </div>
+                    <% }
+                        else
+                        {%>
+                    <div class="row justify-content-md-center">
+                        <p><a href="LeaseSlip.aspx" class="btn btn-primary btn-med">Lease Slip</a></p>
+                    </div>
                     <%} %>
                 </div>
             </div>

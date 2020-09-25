@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using CPRG214.InlandMarinaLtd.App.Controls;
 using CPRG214.InlandMarinaLtd.Data;
 
 namespace CPRG214.InlandMarinaLtd.App.Controls
@@ -34,6 +27,7 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
             uxID.Text = e.ID;
             uxName.Text = e.Name;
 
+            // convert boolean 
             if (e.WaterService == true)
             {
                 uxWaterServices.Text = "Available";
@@ -51,8 +45,6 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
             }
             
         }
-
-
 
         protected void DropDownSlips_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CPRG214.InlandMarinaLtd.Data
 {
     public class MarinaManager
     {
+        // retrieve all dock info
         public IList GetAllListItems()
         {
             var db = new Marina_Auth_AddedEntities();
@@ -26,6 +20,7 @@ namespace CPRG214.InlandMarinaLtd.Data
             return docks;
         }
 
+        // find dock id
         public static Dock Find(int ID)
         {
             var db = new Marina_Auth_AddedEntities();
@@ -33,7 +28,7 @@ namespace CPRG214.InlandMarinaLtd.Data
             return docks;
         }
 
-
+        // retrieve all slip info
         public IList GetAllSlipsListItems()
         {
             var db = new Marina_Auth_AddedEntities();
@@ -47,7 +42,7 @@ namespace CPRG214.InlandMarinaLtd.Data
             return slips;
         }
 
-
+        // find slip id
         public static Slip FindSlip(int id)
         {
             var db = new Marina_Auth_AddedEntities();
@@ -55,6 +50,7 @@ namespace CPRG214.InlandMarinaLtd.Data
             return slip;
         }
 
+        // retreive slips that are not leased by dock id
         public static List<Slip> getAvailableSlipByDock(int id)
         {
             var db = new Marina_Auth_AddedEntities();
@@ -65,6 +61,7 @@ namespace CPRG214.InlandMarinaLtd.Data
             return slips;
         }
 
+        // retrieve all lease info by customer id
         public static ICollection<Lease> GetLeasesByCustomerID(int ID)
         {
             var db = new Marina_Auth_AddedEntities();
@@ -75,6 +72,7 @@ namespace CPRG214.InlandMarinaLtd.Data
             return leases;
         }
 
+        // retrieve all lease info
         public static IList GetAllLeases(int ID)
         {
             var db = new Marina_Auth_AddedEntities();
