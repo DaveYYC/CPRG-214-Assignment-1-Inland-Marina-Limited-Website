@@ -13,7 +13,7 @@ namespace CPRG214.InlandMarinaLtd.App.Controls
             if (IsUpdate)
             {
                 //get customer id out of session
-                if (Session["CustomerID"] != null)
+                if (Session["CustomerID"] != null && uxFirstName.Text == string.Empty)
                 {
                     //convert the object in session to an int
                     var ID = Convert.ToInt32(Session["CustomerID"]);
